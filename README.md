@@ -10,6 +10,15 @@ Clone the repo
 git clone https://github.com/BrohdeXC/1337ness.git
 ```
 
+Navigate into the directory
+```bash
+cd 1337ness
+```
+Add permissions to the files
+```bash
+chmod +x 1337NESS LeetSpeak.py
+```
+
 ## Usage
 
 Go into the folder and run the command
@@ -35,6 +44,10 @@ Version 0.2                                                By: BrohdeXC
 -----------------------------------------------------------------------
 Please make a selection:
 ```
+
+## Known Issues and Planned Updates
+Top Priority: Python3 module '__main__' can't be found upon clone, breaking all Leet
+
 
 ## Contributing
 
