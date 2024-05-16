@@ -18,6 +18,10 @@ Add permissions to the files
 ```bash
 chmod +x 1337NESS LeetSpeak.py
 ```
+Optional - Move all files to /usr/bin/local for global access
+```bash
+mv ./1337ness/* /usr/local/bin/
+```
 
 ## Usage
 
