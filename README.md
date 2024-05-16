@@ -47,7 +47,7 @@ Please make a selection:
 
 ## Known Issues and Planned Updates
 Top Priority: Python3 module '__main__' can't be found upon clone, breaking all Leet
-
+Planned: Make more user friendly by adding protections against already created files
 
 ## Contributing
 
