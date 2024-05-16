@@ -24,7 +24,7 @@ Version 0.2                                                By: BrohdeXC
 
 # Setup variables and LeetSpeak.py path
 repeat=1
-leetpath=$(locate LeetSpeak.py)
+leetpath="./LeetSpeak.py"
 
 # Main Function 
 function main {
