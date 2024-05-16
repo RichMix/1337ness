@@ -10,12 +10,14 @@ echo '
  |   |/       \/       \ /    /    |    \|        \/        \/        \
  |___/______  /______  //____/\____|__  /_______  /_______  /_______  /
             \/       \/               \/        \/        \/        \/ 
-Version 0.1                                                By: BrohdeXC
+Version 0.2                                                By: BrohdeXC
 -----------------------------------------------------------------------
     1) Leet a Word
     2) Leet a List
     3) Leet w/ CeWL (By Robin Wood AKA Digininja)
-    4) Exit
+    4) Append Wordlists
+    5) Permutate Wordlists
+    6) Exit
 -----------------------------------------------------------------------'
     read -p 'Please make a selection: ' choice
 }
@@ -39,13 +41,19 @@ function main {
         elif (($choice == 3)); then
             cewlleet
             repeat
-        elif (($choice == 4)); then
+	elif (($choice == 4)); then
+            append
+            repeat
+        elif (($choice == 5)); then
+            permutate
+            repeat
+        elif (($choice == 6)); then
 	    echo Thanks for using 1337ness!
 	    sleep .75
 	    clear
             repeat=0
         else
-            echo "Invalid Response, Please make a selection (1-4): "
+            echo "Invalid Response, Please make a selection (1-6): "
         fi
     done
 }
@@ -121,6 +129,38 @@ function cewlleet {
 
 	# Clean up
 	rm temp.txt
+}
+
+# Append List Function
+function append {
+        # Get user Inputs
+        read -p "What is the name of the first list? " lst1
+        read -p "What is the name of the second list? " lst2
+        read -p "What is the name of the output file? " out
+
+        # Combine the lists into one output file
+        cat $lst1 $lst2 > $out
+        echo Lists appended into \"$out\"!
+}
+ 
+# Permutate List Function
+function permutate {
+        read -p "What is the name of the first list? " lst1
+        read -p "What is the name of the second list? " lst2
+        read -p "What is the name of the output file? " out
+
+        touch "$out"
+
+    # Generate permutations
+    while read line1
+        do
+        while read line2
+            do
+            echo $line1$line2 >> "$out"
+        done < "$lst2"
+    done < "$lst1"
+
+    echo "Permutations saved to \"$out\"!"
 }
 
 main
