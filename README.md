@@ -20,7 +20,7 @@ chmod +x 1337NESS LeetSpeak.py
 ```
 Optional - Move all files to /usr/bin/local for global access
 ```bash
-mv ./1337ness/* /usr/local/bin/
+mv ../1337ness/* /usr/local/bin/ && cd .. && rm -r 1337ness/
 ```
 
 ## Usage
