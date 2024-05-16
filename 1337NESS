@@ -1,0 +1,126 @@
+#!/bin/bash
+
+# ASCII art for the cool kids
+function options {
+clear
+echo '
+ ____________ ________________________  ___________ _________ _________
+/_   \_____  \\_____  \______  \      \ \_   _____//   _____//   _____/
+ |   | _(__  <  _(__  <   /    /   |   \ |    __)_ \_____  \ \_____  \ 
+ |   |/       \/       \ /    /    |    \|        \/        \/        \
+ |___/______  /______  //____/\____|__  /_______  /_______  /_______  /
+            \/       \/               \/        \/        \/        \/ 
+Version 0.1                                                By: BrohdeXC
+-----------------------------------------------------------------------
+    1) Leet a Word
+    2) Leet a List
+    3) Leet w/ CeWL (By Robin Wood AKA Digininja)
+    4) Exit
+-----------------------------------------------------------------------'
+    read -p 'Please make a selection: ' choice
+}
+
+# Setup variables and LeetSpeak.py path
+repeat=1
+leetpath=$(locate LeetSpeak.py)
+
+# Main Function 
+function main {
+    while [[ $repeat -eq 1 ]]; do
+        options
+
+        # User selection of which program to run
+        if (($choice == 1)); then
+            wordleet
+            repeat
+        elif (($choice == 2)); then
+            listleet
+            repeat
+        elif (($choice == 3)); then
+            cewlleet
+            repeat
+        elif (($choice == 4)); then
+	    echo Thanks for using 1337ness!
+	    sleep .75
+	    clear
+            repeat=0
+        else
+            echo "Invalid Response, Please make a selection (1-4): "
+        fi
+    done
+}
+
+# Repeat Function
+function repeat {
+    read -p "Would you like to continue? (y/n): " cont
+    if [[ $cont == "y" || $cont == "Y" ]]; then
+        echo "Continuing..."
+	sleep .75
+        return 0
+    elif [[ $cont == "n" || $cont == "N" ]]; then
+        echo "Thanks for using 1337ness!"
+	sleep 0.75
+	clear
+        repeat=0
+        return 1
+    else
+        echo "Invalid Response, Would you like to continue? (y/n): "
+        return 0
+    fi
+}
+
+# WordLeet Function
+function wordleet {
+	read -p "What is the word you would like to 1337? " word
+	read -p "What is the name of the output file? " out
+	python3 "$leetpath" $word > $out
+	echo Wordlist saved as $out
+}
+
+# ListLeet Function
+function listleet {
+	read -p "What is the path of the input file? " input
+	read -p "What is the name of the output file? " out
+	while read line
+	do
+		python3 "$leetpath" $line >> $out
+	done < $input
+	echo Wordlist saved as $out
+}
+
+# CewlLeet Function
+function cewlleet {
+	# Gather information to be used
+	read -p "What is the URL you would like to scrape? " url
+	read -p "What is the minimum word length to look for? " min
+	read -p "What is the maximum word length to look for? " max
+	read -p "How many of the most common words should be used? " count
+	read -p "What do you want to name the output file? " out
+
+	# Run Cewl and output it to a file
+	cewl -m $min -x $max -d 0 -w $out --lowercase $url 
+
+	# Take the [user defined #] most common words and put them in a temporary file
+	cat $out | head -n $count > temp.txt
+	rm $out
+
+	# Take the [user defined #] most common words and put them into a list 
+	echo -------------------------------------------------------------------------
+	echo The top $count words on this website are:
+	cat temp.txt | head -n $count
+	echo -------------------------------------------------------------------------
+
+	# Create output file put the leetspeak variations into it
+	touch $out
+	while read line
+	do
+		python3 "$leetpath" $line >> $out
+	done < temp.txt
+
+	echo Your wordlist has been generated as \"$out\"!
+
+	# Clean up
+	rm temp.txt
+}
+
+main
