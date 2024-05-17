@@ -50,7 +50,7 @@ Please make a selection:
 ```
 
 ## Known Issues and Planned Updates
-No current known issues
+No current known issues  
 Planned: Make more user friendly by adding protections against already created files  
 Planned: Add more variations for leet patterns
 
