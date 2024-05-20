@@ -2,7 +2,7 @@
 
 # Variables, Paths, Version
 repeat=1
-VN="0.4.0"  # Version Number
+VN="0.4.1"  # Version Number
 leetpath="$(dirname "$(readlink -f "$0")")"  # Path of LeetFolder
 leetdiff="LeetSpeakEasy.py" # Default leetspeak difficulty
 
@@ -104,7 +104,7 @@ function diff {
         elif (($diffchoice == 3)); then
             leetdiff="LeetSpeakMedium.py"
 	elif (($diffchoice == 4)); then
-	    leetdiff="LeetSpeakHard.py
+	    leetdiff="LeetSpeakHard.py"
         elif (($diffchoice == 5)); then
             return
         else
