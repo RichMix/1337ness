@@ -1,6 +1,10 @@
 # 1337ness
 
-1337ness is an all-in-one password list generator, to be used in
+1337ness is an all-in-one password list generator, to be used for CTF password cracking
+
+## Changelog
+
+v0.3 - Added more leetscript variations, change them in the options menu!
 
 ## Installation
 
@@ -16,7 +20,7 @@ cd 1337ness
 ```
 Add permissions to the files
 ```bash
-chmod +x 1337NESS LeetSpeak.py
+chmod +x 1337NESS LeetSpeakEasy.py LeetSpeakMedium.py LeetSpeakHard.py
 ```
 Optional - Move all files to /usr/bin/local for global access
 ```bash
@@ -37,22 +41,23 @@ Choose one of the options and follow the prompts to get a wordlist
  |   |/       \/       \ /    /    |    \|        \/        \/        \
  |___/______  /______  //____/\____|__  /_______  /_______  /_______  /
             \/       \/               \/        \/        \/        \/ 
-Version 0.2                                                By: BrohdeXC
+Version 0.3                                                By: BrohdeXC
 -----------------------------------------------------------------------
     1) Leet a Word
     2) Leet a List
     3) Leet w/ CeWL (By Robin Wood AKA Digininja)
     4) Append Wordlists
     5) Permutate Wordlists
-    6) Exit
+    6) Options
+    7) Exit
 -----------------------------------------------------------------------
 Please make a selection:
 ```
 
 ## Known Issues and Planned Updates
-Pathing issues for optional global command  
+Issues:  No current known issues  
 Planned: Make more user friendly by adding protections against already created files  
-Planned: Add more variations for leet patterns
+Planned: Make an installer script for easier download so you can get to cracking faster
 
 ## Contributing
 
