@@ -1,8 +1,13 @@
 #!/bin/bash
 
+# Variables, Paths, Version
+repeat=1
+VN="0.3"  # Version Number
+leetpath="$(dirname "$(readlink -f "$0")")"  # Path of LeetFolder
+leetdiff="LeetSpeak.py" # Difficulty of LeetSpeak
+
 # ASCII art for the cool kids
-function options {
-clear
+function asciilogo {
 echo '
  ____________ ________________________  ___________ _________ _________
 /_   \_____  \\_____  \______  \      \ \_   _____//   _____//   _____/
@@ -10,50 +15,97 @@ echo '
  |   |/       \/       \ /    /    |    \|        \/        \/        \
  |___/______  /______  //____/\____|__  /_______  /_______  /_______  /
             \/       \/               \/        \/        \/        \/ 
-Version 0.2                                                By: BrohdeXC
------------------------------------------------------------------------
-    1) Leet a Word
+Version '$VN'                                                By: BrohdeXC
+-----------------------------------------------------------------------'
+}
+
+# Tool Selection for the nerds
+function asciimain {
+echo '    1) Leet a Word
     2) Leet a List
     3) Leet w/ CeWL (By Robin Wood AKA Digininja)
     4) Append Wordlists
     5) Permutate Wordlists
-    6) Exit
+    6) Options
+    7) Exit
 -----------------------------------------------------------------------'
     read -p 'Please make a selection: ' choice
 }
 
-# Setup variables and LeetSpeak.py path
-repeat=1
-leetpath="./LeetSpeak.py"
+# Leetspeak Difficulty Selection
+function asciidiff {
+    echo "    1) Easy   - Common single letter substitutions (Quick, Short List)
+    2) Medium - Uncommon single letter substitutions
+    3) Hard   - All possible leetspeak substitutions (Slow, Long List)
+    4) Return
+
+                Currently Selected: "$leetdiff"
+-----------------------------------------------------------------------"
+    read -p "Which leetspeak list would you like to use? " diffchoice
+}
 
 # Main Function 
 function main {
     while [[ $repeat -eq 1 ]]; do
-        options
-
+        clear
+	asciilogo
+	asciimain
         # User selection of which program to run
         if (($choice == 1)); then
+	    clear
+	    asciilogo
             wordleet
             repeat
         elif (($choice == 2)); then
+	    clear
+	    asciilogo
             listleet
             repeat
         elif (($choice == 3)); then
+	    clear
+	    asciilogo
             cewlleet
             repeat
 	elif (($choice == 4)); then
+	    clear
+	    asciilogo
             append
             repeat
         elif (($choice == 5)); then
+	    clear
+	    asciilogo
             permutate
             repeat
         elif (($choice == 6)); then
+	    diff
+	elif (($choice == 7)); then
 	    echo Thanks for using 1337ness!
 	    sleep .75
 	    clear
             repeat=0
         else
             echo "Invalid Response, Please make a selection (1-6): "
+        fi
+    done
+}
+
+# LeetSpeak Difficulty
+function diff {
+    diffchoice=0
+    while [[ $diffchoice != 4 ]]; do
+        clear
+        asciilogo
+        asciidiff
+        if (($diffchoice == 1)); then
+            leetdiff="LeetSpeakEasy.py"
+        elif (($diffchoice == 2)); then
+            leetdiff="LeetSpeakMedium.py"
+        elif (($diffchoice == 3)); then
+            leetdiff="LeetSpeakHard.py"
+        elif (($diffchoice == 4)); then
+            return
+        else
+            echo "Invalid Response, Please make a selection (1-4): "
         fi
     done
 }
@@ -81,7 +133,7 @@ function repeat {
 function wordleet {
 	read -p "What is the word you would like to 1337? " word
 	read -p "What is the name of the output file? " out
-	python3 "$leetpath" $word > $out
+	python3 $leetpath/$leetdiff $word > $out
 	echo Wordlist saved as $out
 }
 
@@ -91,7 +143,7 @@ function listleet {
 	read -p "What is the name of the output file? " out
 	while read line
 	do
-		python3 "$leetpath" $line >> $out
+		python3 $leetpath/$leetdiff $line >> $out
 	done < $input
 	echo Wordlist saved as $out
 }
@@ -122,7 +174,7 @@ function cewlleet {
 	touch $out
 	while read line
 	do
-		python3 "$leetpath" $line >> $out
+		python3 $leetpath/$leetdiff $line >> $out
 	done < temp.txt
 
 	echo Your wordlist has been generated as \"$out\"!
