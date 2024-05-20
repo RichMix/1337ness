@@ -34,7 +34,7 @@ echo '    1) Leet a Word
 
 # Leetspeak Difficulty Selection
 function asciidiff {
-    echo "    1) UL Case - Onlyt and lowercase substitutions (Fastest)
+    echo "    1) UL Case - Upper and lowercase substitutions (Fastest)
     2) Easy   - Common single letter substitutions (Default)
     3) Medium - Uncommon single letter substitutions
     4) Hard   - All possible leetspeak substitutions (Slow, Long List)
