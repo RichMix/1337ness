@@ -2,10 +2,6 @@
 
 1337ness is an all-in-one password list generator, to be used for CTF password cracking
 
-## Changelog
-
-v0.3 - Added more leetscript variations, change them in the options menu!
-
 ## Installation
 
 Clone the repo
@@ -41,7 +37,7 @@ Choose one of the options and follow the prompts to get a wordlist
  |   |/       \/       \ /    /    |    \|        \/        \/        \
  |___/______  /______  //____/\____|__  /_______  /_______  /_______  /
             \/       \/               \/        \/        \/        \/ 
-Version 0.3                                                By: BrohdeXC
+Version 0.4.1                                              By: BrohdeXC
 -----------------------------------------------------------------------
     1) Leet a Word
     2) Leet a List
@@ -58,6 +54,12 @@ Please make a selection:
 Issues:  No current known issues  
 Planned: Make more user friendly by adding protections against already created files  
 Planned: Make an installer script for easier download so you can get to cracking faster
+
+## Changelog
+
+v0.4.1 - Fixed an issue  
+v0.4.0 - Added upper and lowercase only scripts  
+v0.3.0 - Added more leetscript variations, change them in the options menu!
 
 ## Contributing
 
