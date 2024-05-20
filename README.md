@@ -9,14 +9,9 @@ Clone the repo
 ```bash
 git clone https://github.com/BrohdeXC/1337ness.git
 ```
-
-Navigate into the directory
-```bash
-cd 1337ness
-```
 Add permissions to the files
 ```bash
-chmod +x 1337NESS LeetSpeakEasy.py LeetSpeakMedium.py LeetSpeakHard.py
+cd 1337ness && chmod +x 1337NESS LeetSpeak* UpperLower.py
 ```
 Optional - Move all files to /usr/bin/local for global access
 ```bash
@@ -29,6 +24,7 @@ Go into the folder and run the command
 ```bash
 ./1337NESS
 ```
+
 Choose one of the options and follow the prompts to get a wordlist
 ```bash
  ____________ ________________________  ___________ _________ _________
@@ -49,11 +45,22 @@ Version 0.4.1                                              By: BrohdeXC
 -----------------------------------------------------------------------
 Please make a selection:
 ```
+Options
+```bash
+-----------------------------------------------------------------------
+    1) UL Case - Upper and lowercase substitutions (Fastest)
+    2) Easy   - Common single letter substitutions (Default)
+    3) Medium - Uncommon single letter substitutions
+    4) Hard   - All possible leetspeak substitutions (Slow, Long List)
+    5) Return
+                Currently Selected: "LeetSpeakEasy.py"
+-----------------------------------------------------------------------
+```
 
 ## Known Issues and Planned Updates
 Issues:  No current known issues  
 Planned: Make more user friendly by adding protections against already created files  
-Planned: Make an installer script for easier download so you can get to cracking faster
+Planned: Make an installer script for easier download so you can get to cracking faster  
 
 ## Changelog
 
