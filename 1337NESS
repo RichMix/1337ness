@@ -2,7 +2,7 @@
 
 # Variables, Paths, Version
 repeat=1
-VN="0.3"  # Version Number
+VN="0.4.0"  # Version Number
 leetpath="$(dirname "$(readlink -f "$0")")"  # Path of LeetFolder
 leetdiff="LeetSpeakEasy.py" # Default leetspeak difficulty
 
@@ -15,7 +15,7 @@ echo '
  |   |/       \/       \ /    /    |    \|        \/        \/        \
  |___/______  /______  //____/\____|__  /_______  /_______  /_______  /
             \/       \/               \/        \/        \/        \/ 
-Version '$VN'                                                By: BrohdeXC
+Version '$VN'						   By: BrohdeXC
 -----------------------------------------------------------------------'
 }
 
@@ -34,14 +34,15 @@ echo '    1) Leet a Word
 
 # Leetspeak Difficulty Selection
 function asciidiff {
-    echo "    1) Easy   - Common single letter substitutions (Quick, Short List)
-    2) Medium - Uncommon single letter substitutions
-    3) Hard   - All possible leetspeak substitutions (Slow, Long List)
-    4) Return
+    echo "    1) UL Case - Onlyt and lowercase substitutions (Fastest)
+    2) Easy   - Common single letter substitutions (Default)
+    3) Medium - Uncommon single letter substitutions
+    4) Hard   - All possible leetspeak substitutions (Slow, Long List)
+    5) Return
 
                 Currently Selected: "$leetdiff"
 -----------------------------------------------------------------------"
-    read -p "Which leetspeak list would you like to use? " diffchoice
+    read -p "Which leetspeak list would you like to use? (1-5) " diffchoice
 }
 
 # Main Function 
@@ -84,7 +85,7 @@ function main {
 	    clear
             repeat=0
         else
-            echo "Invalid Response, Please make a selection (1-6): "
+            echo "Invalid Response, Please make a selection (1-7): "
         fi
     done
 }
@@ -92,20 +93,22 @@ function main {
 # LeetSpeak Difficulty
 function diff {
     diffchoice=0
-    while [[ $diffchoice != 4 ]]; do
+    while [[ $diffchoice != 5 ]]; do
         clear
         asciilogo
         asciidiff
         if (($diffchoice == 1)); then
-            leetdiff="LeetSpeakEasy.py"
+            leetdiff="UpperLower.py"
         elif (($diffchoice == 2)); then
-            leetdiff="LeetSpeakMedium.py"
+            leetdiff="LeetSpeakEasy.py"
         elif (($diffchoice == 3)); then
-            leetdiff="LeetSpeakHard.py"
-        elif (($diffchoice == 4)); then
+            leetdiff="LeetSpeakMedium.py"
+	elif (($diffchoice == 4)); then
+	    leetdiff="LeetSpeakHard.py
+        elif (($diffchoice == 5)); then
             return
         else
-            echo "Invalid Response, Please make a selection (1-4): "
+            echo "Invalid Response, Please make a selection (1-5): "
         fi
     done
 }
