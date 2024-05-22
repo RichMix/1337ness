@@ -65,6 +65,7 @@ Options
 Issues:  No current known issues  
 Planned: Make more user friendly by adding protections against already created files  
 Planned: Make an installer script for easier download so you can get to cracking faster  
+Planned: Implement itrtools to create lists faster
 
 ## Changelog
 
