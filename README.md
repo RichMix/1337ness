@@ -65,10 +65,12 @@ Options
 Issues:  No current known issues  
 Planned: Make more user friendly by adding protections against already created files  
 Planned: Make an installer script for easier download so you can get to cracking faster  
-Planned: Implement itrtools to create lists faster
+Planned: Implement itrtools to create lists faster  
+Planned: Add a progress bar for list generation  
 
 ## Changelog
 
+v0.4.2 - Added file size to output confirmation  
 v0.4.1 - Fixed an issue  
 v0.4.0 - Added upper and lowercase only scripts  
 v0.3.0 - Added more leetscript variations, change them in the options menu!
