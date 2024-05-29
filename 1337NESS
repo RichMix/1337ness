@@ -2,7 +2,7 @@
 
 # Variables, Paths, Version
 repeat=1
-VN="0.4.1"  # Version Number
+VN="0.4.2"  # Version Number
 leetpath="$(dirname "$(readlink -f "$0")")"  # Path of LeetFolder
 leetdiff="LeetSpeakEasy.py" # Default leetspeak difficulty
 
@@ -137,7 +137,7 @@ function wordleet {
 	read -p "What is the word you would like to 1337? " word
 	read -p "What is the name of the output file? " out
 	python3 $leetpath/$leetdiff $word > $out
-	echo Wordlist saved as $out
+	echo "Wordlist saved as \"$out\" ($(ls -lh $out | cut -d ' ' -f 5))"
 }
 
 # ListLeet Function
@@ -148,7 +148,7 @@ function listleet {
 	do
 		python3 $leetpath/$leetdiff $line >> $out
 	done < $input
-	echo Wordlist saved as $out
+	echo "Wordlist saved as \"$out\" ($(ls -lh $out | cut -d ' ' -f 5))"
 }
 
 # CewlLeet Function
@@ -180,7 +180,7 @@ function cewlleet {
 		python3 $leetpath/$leetdiff $line >> $out
 	done < temp.txt
 
-	echo Your wordlist has been generated as \"$out\"!
+	echo "Wordlist saved as \"$out\" ($(ls -lh $out | cut -d ' ' -f 5))"
 
 	# Clean up
 	rm temp.txt
@@ -195,7 +195,7 @@ function append {
 
         # Combine the lists into one output file
         cat $lst1 $lst2 > $out
-        echo Lists appended into \"$out\"!
+        echo "Lists appended to \"$out\"! ($(ls -lh $out | cut -d ' ' -f 5))"
 }
  
 # Permutate List Function
@@ -215,7 +215,7 @@ function permutate {
         done < "$lst2"
     done < "$lst1"
 
-    echo "Permutations saved to \"$out\"!"
+    echo "Permutations saved to \"$out\"! ($(ls -lh $out | cut -d ' ' -f 5))"
 }
 
 main
