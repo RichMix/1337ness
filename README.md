@@ -11,11 +11,11 @@ git clone https://github.com/BrohdeXC/1337ness.git
 ```
 Add permissions to the files
 ```bash
-cd 1337ness && chmod +x 1337NESS LeetSpeak* UpperLower.py
+cd 1337ness && chmod +x 1337NESS LeetSpeak.py
 ```
-Optional - Move all files to /usr/bin/local for global access
+Optional (requires sudo) - Move all files to /usr/bin/local for global access
 ```bash
-mv ../1337ness/* /usr/local/bin/ && cd .. && rm -r 1337ness/
+sudo mv ../1337ness/* /usr/local/bin/ && cd .. && rm -r 1337ness/
 ```
 
 ## Usage
@@ -33,7 +33,7 @@ Choose one of the options and follow the prompts to get a wordlist
  |   |/       \/       \ /    /    |    \|        \/        \/        \
  |___/______  /______  //____/\____|__  /_______  /_______  /_______  /
             \/       \/               \/        \/        \/        \/ 
-Version 0.4.1                                              By: BrohdeXC
+Version 0.4.3                                              By: BrohdeXC
 -----------------------------------------------------------------------
     1) Leet a Word
     2) Leet a List
@@ -63,13 +63,12 @@ Options
 
 ## Known Issues and Planned Updates
 Issues:  No current known issues  
-Planned: Make more user friendly by adding protections against already created files  
+Planned: Make more user friendly by adding protections for already created files  
 Planned: Make an installer script for easier download so you can get to cracking faster  
-Planned: Implement itrtools to create lists faster  
-Planned: Add a progress bar for list generation  
 
 ## Changelog
 
+v0.4.3 - Added progress bar and combined all python files  
 v0.4.2 - Added file size to output confirmation  
 v0.4.1 - Fixed an issue  
 v0.4.0 - Added upper and lowercase only scripts  
