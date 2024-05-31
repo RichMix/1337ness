@@ -53,7 +53,7 @@ Options
     3) Medium - Uncommon single letter substitutions
     4) Hard   - All possible leetspeak substitutions (Slow, Long List)
     5) Return
-                Currently Selected: "LeetSpeakEasy.py"
+                Currently Selected: Easy
 -----------------------------------------------------------------------
 ```
 
