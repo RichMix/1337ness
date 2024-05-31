@@ -2,9 +2,9 @@
 
 # Variables, Paths, Version
 repeat=1
-VN="0.4.2"  # Version Number
+VN="0.4.3"  # Version Number
 leetpath="$(dirname "$(readlink -f "$0")")"  # Path of LeetFolder
-leetdiff="LeetSpeakEasy.py" # Default leetspeak difficulty
+leetdiff="Easy" # Default leetspeak difficulty
 
 # ASCII art for the cool kids
 function asciilogo {
@@ -98,13 +98,13 @@ function diff {
         asciilogo
         asciidiff
         if (($diffchoice == 1)); then
-            leetdiff="UpperLower.py"
+            leetdiff="UpperLower"
         elif (($diffchoice == 2)); then
-            leetdiff="LeetSpeakEasy.py"
+            leetdiff="Easy"
         elif (($diffchoice == 3)); then
-            leetdiff="LeetSpeakMedium.py"
+            leetdiff="Medium"
 	elif (($diffchoice == 4)); then
-	    leetdiff="LeetSpeakHard.py"
+	    leetdiff="Hard"
         elif (($diffchoice == 5)); then
             return
         else
@@ -136,7 +136,7 @@ function repeat {
 function wordleet {
 	read -p "What is the word you would like to 1337? " word
 	read -p "What is the name of the output file? " out
-	python3 $leetpath/$leetdiff $word > $out
+	python3 $leetpath/LeetSpeak.py $word $leetdiff > $out
 	echo "Wordlist saved as \"$out\" ($(ls -lh $out | cut -d ' ' -f 5))"
 }
 
@@ -146,7 +146,7 @@ function listleet {
 	read -p "What is the name of the output file? " out
 	while read line
 	do
-		python3 $leetpath/$leetdiff $line >> $out
+		python3 $leetpath/LeetSpeak.py $line $leetdiff >> $out
 	done < $input
 	echo "Wordlist saved as \"$out\" ($(ls -lh $out | cut -d ' ' -f 5))"
 }
@@ -177,7 +177,7 @@ function cewlleet {
 	touch $out
 	while read line
 	do
-		python3 $leetpath/$leetdiff $line >> $out
+		python3 $leetpath/LeetSpeak.py $line $leetdiff >> $out
 	done < temp.txt
 
 	echo "Wordlist saved as \"$out\" ($(ls -lh $out | cut -d ' ' -f 5))"
