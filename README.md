@@ -33,7 +33,7 @@ Choose one of the options and follow the prompts to get a wordlist
  |   |/       \/       \ /    /    |    \|        \/        \/        \
  |___/______  /______  //____/\____|__  /_______  /_______  /_______  /
             \/       \/               \/        \/        \/        \/ 
-Version 0.4.3                                              By: BrohdeXC
+Version 0.4.4                                              By: BrohdeXC
 -----------------------------------------------------------------------
     1) Leet a Word
     2) Leet a List
@@ -62,12 +62,12 @@ Options
 
 
 ## Known Issues and Planned Updates
-Issues:  No current known issues  
-Planned: Make more user friendly by adding protections for already created files  
+Issues:  No current known issues   
 Planned: Make an installer script for easier download so you can get to cracking faster  
 
 ## Changelog
 
+v0.4.4 - Added protections for current files and checks if files exist before running  
 v0.4.3 - Added progress bar and combined all python files  
 v0.4.2 - Added file size to output confirmation  
 v0.4.1 - Fixed an issue  
