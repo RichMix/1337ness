@@ -2,7 +2,7 @@
 
 # Variables, Paths, Version
 repeat=1
-VN="0.4.3"  # Version Number
+VN="0.4.4"  # Version Number
 leetpath="$(dirname "$(readlink -f "$0")")"  # Path of LeetFolder
 leetdiff="Easy" # Default leetspeak difficulty
 
@@ -132,10 +132,48 @@ function repeat {
     fi
 }
 
+# Check if file exists and corrects if file not there
+function existin {
+    rep=0
+    while [[ $rep == 0 ]]; do
+        if [ -e $leetpath/$input ]; then
+            rep=1
+            continue
+        else
+            read -p "This file cannot be found, input a valid filename: " input
+        fi
+    done
+}
+
+
+# Protect already existing files function
+function existout {
+    rep=0
+    while [[ $rep == 0 ]]; do
+        if [ -e $leetpath/$out ]; then
+            read -p "Are you sure you want to override the file \"$out\"? (y/n) " override
+            if [ $override == "y" ]; then
+                rep=1
+                continue
+            elif [ $override == "n" ]; then
+                read -p "What is the name of the output file? " out
+                continue
+            else
+                read -p "Invalid response: Are you sure you want to override the file \'$out\'? (y/n) " override
+                continue
+            fi
+        else
+            rep=1
+            continue
+        fi
+    done
+}
+
 # WordLeet Function
 function wordleet {
 	read -p "What is the word you would like to 1337? " word
 	read -p "What is the name of the output file? " out
+	existout
 	python3 $leetpath/LeetSpeak.py $word $leetdiff > $out
 	echo "Wordlist saved as \"$out\" ($(ls -lh $out | cut -d ' ' -f 5))"
 }
@@ -143,7 +181,9 @@ function wordleet {
 # ListLeet Function
 function listleet {
 	read -p "What is the path of the input file? " input
+	existin
 	read -p "What is the name of the output file? " out
+	existout
 	while read line
 	do
 		python3 $leetpath/LeetSpeak.py $line $leetdiff >> $out
@@ -159,6 +199,7 @@ function cewlleet {
 	read -p "What is the maximum word length to look for? " max
 	read -p "How many of the most common words should be used? " count
 	read -p "What do you want to name the output file? " out
+	existout
 
 	# Run Cewl and output it to a file
 	cewl -m $min -x $max -d 0 -w $out --lowercase $url 
@@ -189,9 +230,14 @@ function cewlleet {
 # Append List Function
 function append {
         # Get user Inputs
-        read -p "What is the name of the first list? " lst1
-        read -p "What is the name of the second list? " lst2
+        read -p "What is the name of the first list? " input
+	existin
+	lst1=$input
+        read -p "What is the name of the second list? " input
+	existin
+	lst2=$input
         read -p "What is the name of the output file? " out
+	existout
 
         # Combine the lists into one output file
         cat $lst1 $lst2 > $out
@@ -200,10 +246,14 @@ function append {
  
 # Permutate List Function
 function permutate {
-        read -p "What is the name of the first list? " lst1
-        read -p "What is the name of the second list? " lst2
+        read -p "What is the name of the first list? " input
+	existin
+	lst1=$input
+        read -p "What is the name of the second list? " input
+	existin
+	lst2=$input
         read -p "What is the name of the output file? " out
-
+	existout
         touch "$out"
 
     # Generate permutations
