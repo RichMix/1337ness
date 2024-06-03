@@ -62,8 +62,11 @@ Options
 
 
 ## Known Issues and Planned Updates
-Issues:  No current known issues   
+Issues:  Problem with running program globally and the file protection implementation  
+Issues:  Progress bar can take up lots of extra time  
 Planned: Make an installer script for easier download so you can get to cracking faster  
+Planned: Make progress bar optional in settings and allow for it to give a progress of the entire leet list generation rather than each individual word in the list
+Planned: Look into 
 
 ## Changelog
 
