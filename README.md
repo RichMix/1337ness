@@ -68,7 +68,7 @@ Planned: Make progress bar optional in settings and allow for it to give a progr
 
 ## Changelog
 
-v0.4.5 - Temporarily removed progress bar, fixed file protection path when running globally
+v0.4.5 - Temporarily removed progress bar, fixed file protection path when running globally  
 v0.4.4 - Added protections for current files and checks if files exist before running  
 v0.4.3 - Added progress bar and combined all python files  
 v0.4.2 - Added file size to output confirmation  
