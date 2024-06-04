@@ -33,7 +33,7 @@ Choose one of the options and follow the prompts to get a wordlist
  |   |/       \/       \ /    /    |    \|        \/        \/        \
  |___/______  /______  //____/\____|__  /_______  /_______  /_______  /
             \/       \/               \/        \/        \/        \/ 
-Version 0.4.4                                              By: BrohdeXC
+Version 0.4.5                                              By: BrohdeXC
 -----------------------------------------------------------------------
     1) Leet a Word
     2) Leet a List
@@ -62,14 +62,13 @@ Options
 
 
 ## Known Issues and Planned Updates
-Issues:  Problem with running program globally and the file protection implementation  
 Issues:  Progress bar can take up lots of extra time  
 Planned: Make an installer script for easier download so you can get to cracking faster  
 Planned: Make progress bar optional in settings and allow for it to give a progress of the entire leet list generation rather than each individual word in the list
-Planned: Look into 
 
 ## Changelog
 
+v0.4.5 - Temporarily removed progress bar, fixed file protection path when running globally
 v0.4.4 - Added protections for current files and checks if files exist before running  
 v0.4.3 - Added progress bar and combined all python files  
 v0.4.2 - Added file size to output confirmation  
