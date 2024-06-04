@@ -2,9 +2,13 @@
 
 # Variables, Paths, Version
 repeat=1
-VN="0.4.4"  # Version Number
+VN="0.4.5"  # Version Number
 leetpath="$(dirname "$(readlink -f "$0")")"  # Path of LeetFolder
-leetdiff="Easy" # Default leetspeak difficulty
+userpath="$(pwd)" # Path of working directory
+
+# Default Settings
+leetdiff="Easy" # Default leetspeak difficult
+progbar="off" # Progress bar turned off
 
 # ASCII art for the cool kids
 function asciilogo {
@@ -136,7 +140,7 @@ function repeat {
 function existin {
     rep=0
     while [[ $rep == 0 ]]; do
-        if [ -e $leetpath/$input ]; then
+        if [ -e $userpath/$input ]; then
             rep=1
             continue
         else
@@ -150,9 +154,10 @@ function existin {
 function existout {
     rep=0
     while [[ $rep == 0 ]]; do
-        if [ -e $leetpath/$out ]; then
+        if [ -e $userpath/$out ]; then
             read -p "Are you sure you want to override the file \"$out\"? (y/n) " override
             if [ $override == "y" ]; then
+		rm $userpath/$out
                 rep=1
                 continue
             elif [ $override == "n" ]; then
@@ -174,7 +179,7 @@ function wordleet {
 	read -p "What is the word you would like to 1337? " word
 	read -p "What is the name of the output file? " out
 	existout
-	python3 $leetpath/LeetSpeak.py $word $leetdiff > $out
+	python3 $leetpath/LeetSpeak.py $word $leetdiff $progbar > $out
 	echo "Wordlist saved as \"$out\" ($(ls -lh $out | cut -d ' ' -f 5))"
 }
 
@@ -186,7 +191,7 @@ function listleet {
 	existout
 	while read line
 	do
-		python3 $leetpath/LeetSpeak.py $line $leetdiff >> $out
+		python3 $leetpath/LeetSpeak.py $line $leetdiff $progbar >> $out
 	done < $input
 	echo "Wordlist saved as \"$out\" ($(ls -lh $out | cut -d ' ' -f 5))"
 }
@@ -218,7 +223,7 @@ function cewlleet {
 	touch $out
 	while read line
 	do
-		python3 $leetpath/LeetSpeak.py $line $leetdiff >> $out
+		python3 $leetpath/LeetSpeak.py $line $leetdiff $progbar >> $out
 	done < temp.txt
 
 	echo "Wordlist saved as \"$out\" ($(ls -lh $out | cut -d ' ' -f 5))"
