@@ -150,21 +150,26 @@ def generate_leetspeak_combinations(word):
 
     # Progress bar and return combo list
     combinations = []
-    with pb.ProgressBar(max_value=total_combinations) as bar:
-        backtrack('', 0)
-        for i in range(m):
-            bar.update(i*5)
-    return combinations
+    if prog == "on":
+        with pb.ProgressBar(max_value=total_combinations) as bar:
+            backtrack('', 0)
+            for i in range(m):
+                bar.update(i*5)
+        return combinations
+    elif prog == "off":
+        backtrack('',0)
+        return combinations
 
 if __name__ == "__main__":
     # Check if the correct number of arguments is provided
-    if len(sys.argv) != 3:
-        print("Usage: python3 LeetSpeak.py <word> <UL/E/M/H>")
+    if len(sys.argv) != 4:
+        print("Usage: python3 LeetSpeak.py <word> <UL/E/M/H> <Progbar On/Off>")
         sys.exit(1)
 
     # Get the word from command-line argument
     word = sys.argv[1]
     diff = sys.argv[2]
+    prog = sys.argv[3]
     
 # Generate leetspeak combinations
 combinations = generate_leetspeak_combinations(word.upper())
