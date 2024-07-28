@@ -62,7 +62,8 @@ Options
 
 
 ## Known Issues and Planned Updates
-Issues:  Progress bar can take up lots of extra time  
+Issues:  Progress bar can take up lots of extra time and currently breaks if the python module is not installed  
+Planned: Either remove the progress bar module all together, hardcode it, or use the planned installer script to put it in  
 Planned: Make an installer script for easier download so you can get to cracking faster  
 Planned: Make progress bar optional in settings and allow for it to give a progress of the entire leet list generation rather than each individual word in the list
 
