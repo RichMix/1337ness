@@ -2,13 +2,13 @@
 
 # Variables, Paths, Version
 repeat=1
-VN="0.4.5"  # Version Number
+VN="0.4.6"  # Version Number
 leetpath="$(dirname "$(readlink -f "$0")")"  # Path of LeetFolder
 userpath="$(pwd)" # Path of working directory
 
 # Default Settings
 leetdiff="Easy" # Default leetspeak difficult
-progbar="off" # Progress bar turned off
+progbar="on" # This will be able to toggle later
 
 # ASCII art for the cool kids
 function asciilogo {
@@ -19,7 +19,7 @@ echo '
  |   |/       \/       \ /    /    |    \|        \/        \/        \
  |___/______  /______  //____/\____|__  /_______  /_______  /_______  /
             \/       \/               \/        \/        \/        \/ 
-Version '$VN'						   By: BrohdeXC
+Version '$VN'	    An All-In-One Wordlist Generator       By: BrohdeXC
 -----------------------------------------------------------------------'
 }
 
@@ -174,6 +174,31 @@ function existout {
     done
 }
 
+# Progress Bar Function - input, out
+function progBar {
+        linecount=$(wc -l $input | cut -d ' ' -f 1)
+        count=0
+        while read -r line
+                do
+                ((count++))
+                echo -ne "Processing line $count of $linecount\r"
+                python3 $leetpath/LeetSpeak.py $line $leetdiff $progbar >> $out
+                local columns=$(tput cols)
+                local progress=$((count * 100 / linecount))
+                local bar_length=$((columns-41))
+                local filled_length=$(((progress * bar_length)/100))
+                local empty_length=$((bar_length - filled_length))
+
+                # Print the progress bar
+                printf "\r %3d%% [%-${filled_length}s%-${empty_length}s] " $progress \
+                        $(printf "%0.s#" $(seq 1 $filled_length)) \
+                        $(printf "%0.s " $(seq 1 $empty_length))
+
+                done < $input
+                echo
+                echo "Wordlist saved as \"$out\" ($(ls -lh $out | cut -d ' ' -f 5))"
+}
+
 # WordLeet Function
 function wordleet {
 	read -p "What is the word you would like to 1337? " word
@@ -189,11 +214,7 @@ function listleet {
 	existin
 	read -p "What is the name of the output file? " out
 	existout
-	while read line
-	do
-		python3 $leetpath/LeetSpeak.py $line $leetdiff $progbar >> $out
-	done < $input
-	echo "Wordlist saved as \"$out\" ($(ls -lh $out | cut -d ' ' -f 5))"
+	progBar
 }
 
 # CewlLeet Function
@@ -216,17 +237,13 @@ function cewlleet {
 	# Take the [user defined #] most common words and put them into a list 
 	echo -------------------------------------------------------------------------
 	echo The top $count words on this website are:
-	cat temp.txt | head -n $count
+	cat temp.txt
 	echo -------------------------------------------------------------------------
+	input=temp.txt
 
 	# Create output file put the leetspeak variations into it
 	touch $out
-	while read line
-	do
-		python3 $leetpath/LeetSpeak.py $line $leetdiff $progbar >> $out
-	done < temp.txt
-
-	echo "Wordlist saved as \"$out\" ($(ls -lh $out | cut -d ' ' -f 5))"
+	progBar
 
 	# Clean up
 	rm temp.txt
@@ -251,7 +268,7 @@ function append {
  
 # Permutate List Function
 function permutate {
-        read -p "What is the name of the first list? " input
+	read -p "What is the name of the first list? " input
 	existin
 	lst1=$input
         read -p "What is the name of the second list? " input
