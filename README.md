@@ -33,7 +33,7 @@ Choose one of the options and follow the prompts to get a wordlist
  |   |/       \/       \ /    /    |    \|        \/        \/        \
  |___/______  /______  //____/\____|__  /_______  /_______  /_______  /
             \/       \/               \/        \/        \/        \/ 
-Version 0.4.5                                              By: BrohdeXC
+Version 0.4.6                                              By: BrohdeXC
 -----------------------------------------------------------------------
     1) Leet a Word
     2) Leet a List
@@ -62,13 +62,14 @@ Options
 
 
 ## Known Issues and Planned Updates
-Issues:  Progress bar can take up lots of extra time and currently breaks if the python module is not installed  
-Planned: Either remove the progress bar module all together, hardcode it, or use the planned installer script to put it in  
 Planned: Make an installer script for easier download so you can get to cracking faster  
-Planned: Make progress bar optional in settings and allow for it to give a progress of the entire leet list generation rather than each individual word in the list
+Planned: Make progress bar optional in settings  
+Planned: Advanced Settings for instant hashing  
+Planned: Get column size at beginning and format output accordingly
 
 ## Changelog
 
+v0.4.6 - Progress bar is now hard coded and can work without the python module  
 v0.4.5 - Temporarily removed progress bar, fixed file protection path when running globally  
 v0.4.4 - Added protections for current files and checks if files exist before running  
 v0.4.3 - Added progress bar and combined all python files  
