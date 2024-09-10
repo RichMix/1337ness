@@ -8,7 +8,7 @@ userpath="$(pwd)" # Path of working directory
 
 # Default Settings
 leetdiff="Easy" # Default leetspeak difficult
-progbar="on" # This will be able to toggle later
+progbar="off" # This will be able to toggle later
 
 # ASCII art for the cool kids
 function asciilogo {
