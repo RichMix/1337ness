@@ -1,7 +1,6 @@
 #!/bin/Python3
 
 import sys
-import progressbar as pb
 from itertools import product
 
 def generate_leetspeak_combinations(word):
@@ -150,15 +149,8 @@ def generate_leetspeak_combinations(word):
 
     # Progress bar and return combo list
     combinations = []
-    if prog == "on":
-        with pb.ProgressBar(max_value=total_combinations) as bar:
-            backtrack('', 0)
-            for i in range(m):
-                bar.update(i*5)
-        return combinations
-    elif prog == "off":
-        backtrack('',0)
-        return combinations
+    backtrack('',0)
+    return combinations
 
 if __name__ == "__main__":
     # Check if the correct number of arguments is provided
