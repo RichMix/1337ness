@@ -62,6 +62,8 @@ Options
 
 
 ## Known Issues and Planned Updates
+Issue: Long permutations override each other at over 32 characters long  
+Planned: Add option to put a symbol in between permutations (colon for salts, etc)  
 Planned: Make an installer script for easier download so you can get to cracking faster  
 Planned: Make progress bar optional in settings  
 Planned: Advanced Settings for instant hashing  
