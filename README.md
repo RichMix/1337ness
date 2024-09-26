@@ -60,17 +60,28 @@ Options
 ## Video
 [![1337ness0.4.1](https://img.youtube.com/vi/QfFK4R9JtvI/0.jpg)](https://www.youtube.com/watch?v=QfFK4R9JtvI)
 
+## Notes and Tips
+If permutate has problems with certain text files, check to make sure the file does not have CRLF line terminators.  
+```bash
+$ file <file.txt>
+Good: <file.txt>: ASCII text
+Bad: <file.txt>: ASCII text, with CRLF line terminators
+```
+To get rid of them in vim:  
+```vim
+:set fileformat=unix
+:w
+```
 
 ## Known Issues and Planned Updates
-Issue: Long permutations override each other at over 32 characters long  
-Planned: Add option to put a symbol in between permutations (colon for salts, etc)  
+Issue: CRLF line terminators cause problems when downloading certain text files  
 Planned: Make an installer script for easier download so you can get to cracking faster  
-Planned: Make progress bar optional in settings  
 Planned: Advanced Settings for instant hashing  
 Planned: Get column size at beginning and format output accordingly
 
 ## Changelog
 
+v0.4.7 - Added separator characters for permutations
 v0.4.6 - Progress bar is now hard coded and can work without the python module  
 v0.4.5 - Temporarily removed progress bar, fixed file protection path when running globally  
 v0.4.4 - Added protections for current files and checks if files exist before running  
