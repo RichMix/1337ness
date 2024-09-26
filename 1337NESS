@@ -2,7 +2,7 @@
 
 # Variables, Paths, Version
 repeat=1
-VN="0.4.6"  # Version Number
+VN="0.4.7"  # Version Number
 leetpath="$(dirname "$(readlink -f "$0")")"  # Path of LeetFolder
 userpath="$(pwd)" # Path of working directory
 
@@ -274,6 +274,7 @@ function permutate {
         read -p "What is the name of the second list? " input
 	existin
 	lst2=$input
+	read -p "What character will separate the lists? (Press Enter if none): separator
         read -p "What is the name of the output file? " out
 	existout
         touch "$out"
@@ -283,7 +284,7 @@ function permutate {
         do
         while read line2
             do
-            echo $line1$line2 >> "$out"
+            echo $line1$separator$line2 >> "$out"
         done < "$lst2"
     done < "$lst1"
 
