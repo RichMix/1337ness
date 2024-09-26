@@ -67,7 +67,6 @@ To get rid of them in vim:
 
 ## Known Issues and Planned Updates
 Issue: CRLF line terminators cause problems when permutating certain text files  
-Planned: Make an installer script for easier download so you can get to cracking faster  
 Planned: Advanced Settings for instant hashing  
 Planned: Get column size at beginning and format output accordingly
 
