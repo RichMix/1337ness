@@ -2,27 +2,19 @@
 
 1337ness is an all-in-one password list generator, to be used for CTF password cracking
 
-## Installation
+## One Line Installation
 
-Clone the repo
-
+Get the installer script, give it permissions, and run 
 ```bash
-git clone https://github.com/BrohdeXC/1337ness.git
+wget https://github.com/BrohdeXC/1337ness/raw/refs/heads/main/installer.sh && chmod +x installer.sh && ./installer.sh
 ```
-Add permissions to the files
-```bash
-cd 1337ness && chmod +x 1337NESS LeetSpeak.py
-```
-Optional (requires sudo) - Move all files to /usr/bin/local for global access
-```bash
-sudo mv ../1337ness/* /usr/local/bin/ && cd .. && rm -r 1337ness/
-```
+If you don't trust it, you can go look at the installer.sh file
 
 ## Usage
 
-Go into the folder and run the command
+Run the command  
 ```bash
-./1337NESS
+1337NESS
 ```
 
 Choose one of the options and follow the prompts to get a wordlist
@@ -33,7 +25,7 @@ Choose one of the options and follow the prompts to get a wordlist
  |   |/       \/       \ /    /    |    \|        \/        \/        \
  |___/______  /______  //____/\____|__  /_______  /_______  /_______  /
             \/       \/               \/        \/        \/        \/ 
-Version 0.4.6                                              By: BrohdeXC
+Version 0.4.7                                              By: BrohdeXC
 -----------------------------------------------------------------------
     1) Leet a Word
     2) Leet a List
@@ -74,14 +66,14 @@ To get rid of them in vim:
 ```
 
 ## Known Issues and Planned Updates
-Issue: CRLF line terminators cause problems when downloading certain text files  
+Issue: CRLF line terminators cause problems when permutating certain text files  
 Planned: Make an installer script for easier download so you can get to cracking faster  
 Planned: Advanced Settings for instant hashing  
 Planned: Get column size at beginning and format output accordingly
 
 ## Changelog
 
-v0.4.7 - Added separator characters for permutations
+v0.4.7 - Added separator characters for permutations  
 v0.4.6 - Progress bar is now hard coded and can work without the python module  
 v0.4.5 - Temporarily removed progress bar, fixed file protection path when running globally  
 v0.4.4 - Added protections for current files and checks if files exist before running  
