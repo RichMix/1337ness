@@ -70,7 +70,8 @@ Issue: CRLF line terminators cause problems when permutating certain text files
 Planned: Add a back key within the file selection menus  
 Planned: Advanced Settings for instant hashing  
 Planned: Get column size at beginning and format output accordingly  
-Planned: Add an option to format wordlists and make them line by line
+Planned: Add an option to format wordlists and make them line by line  
+Planned: Functionality for subtracting wordlists
 
 ## Changelog
 
