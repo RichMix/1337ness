@@ -2,7 +2,7 @@
 
 # Variables, Paths, Version
 repeat=1
-VN="0.4.7"  # Version Number
+VN="0.4.8"  # Version Number
 leetpath="$(dirname "$(readlink -f "$0")")"  # Path of LeetFolder
 userpath="$(pwd)" # Path of working directory
 
@@ -30,8 +30,9 @@ echo '    1) Leet a Word
     3) Leet w/ CeWL (By Robin Wood AKA Digininja)
     4) Append Wordlists
     5) Permutate Wordlists
-    6) Options
-    7) Exit
+    6) Subtract Wordlists
+    7) Options
+    8) Exit
 -----------------------------------------------------------------------'
     read -p 'Please make a selection: ' choice
 }
@@ -81,15 +82,20 @@ function main {
 	    asciilogo
             permutate
             repeat
-        elif (($choice == 6)); then
+	elif (($choice == 6)); then
+	    clear
+	    asciilogo
+	    subtract
+	    repeat
+        elif (($choice == 7)); then
 	    diff
-	elif (($choice == 7)); then
+	elif (($choice == 8)); then
 	    echo Thanks for using 1337ness!
 	    sleep .75
 	    clear
             repeat=0
         else
-            echo "Invalid Response, Please make a selection (1-7): "
+            echo "Invalid Response, Please make a selection (1-8): "
         fi
     done
 }
@@ -222,13 +228,12 @@ function cewlleet {
 	# Gather information to be used
 	read -p "What is the URL you would like to scrape? " url
 	read -p "What is the minimum word length to look for? " min
-	read -p "What is the maximum word length to look for? " max
 	read -p "How many of the most common words should be used? " count
 	read -p "What do you want to name the output file? " out
 	existout
 
 	# Run Cewl and output it to a file
-	cewl -m $min -x $max -d 0 -w $out --lowercase $url 
+	cewl -m $min -d 0 -w $out --lowercase $url 
 
 	# Take the [user defined #] most common words and put them in a temporary file
 	cat $out | head -n $count > temp.txt
@@ -289,6 +294,23 @@ function permutate {
     done < "$lst1"
 
     echo "Permutations saved to \"$out\"! ($(ls -lh $out | cut -d ' ' -f 5))"
+}
+
+# Subtract List Function
+function subtract {
+        read -p "What is the name of the first list? " input
+        existin
+        lst1=$input
+        read -p "What is the name of the second list? " input
+        existin
+        lst2=$input
+        read -p "What is the name of the output file? " out
+
+        # Subtract the lists
+        grep -Fxv -f "$lst1" "$lst2" > "$out"
+        grep -Fxv -f "$lst2" "$lst1" >> "$out"
+
+        echo "Leftover words saved to \"$out\"! ($(ls -lh $out | cut -d ' ' -f 5))"
 }
 
 main
