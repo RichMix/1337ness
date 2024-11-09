@@ -2,7 +2,7 @@
 
 # Variables, Paths, Version
 repeat=1
-VN="0.4.8"  # Version Number
+VN="0.4.9"  # Version Number
 leetpath="$(dirname "$(readlink -f "$0")")"  # Path of LeetFolder
 userpath="$(pwd)" # Path of working directory
 
@@ -188,7 +188,7 @@ function progBar {
                 do
                 ((count++))
                 echo -ne "Processing line $count of $linecount\r"
-                python3 $leetpath/LeetSpeak.py $line $leetdiff $progbar >> $out
+                python3 $leetpath/LeetSpeak.py "$line" $leetdiff $progbar >> $out
                 local columns=$(tput cols)
                 local progress=$((count * 100 / linecount))
                 local bar_length=$((columns-41))
@@ -210,7 +210,7 @@ function wordleet {
 	read -p "What is the word you would like to 1337? " word
 	read -p "What is the name of the output file? " out
 	existout
-	python3 $leetpath/LeetSpeak.py $word $leetdiff $progbar > $out
+	python3 $leetpath/LeetSpeak.py "$word" $leetdiff $progbar > $out
 	echo "Wordlist saved as \"$out\" ($(ls -lh $out | cut -d ' ' -f 5))"
 }
 
